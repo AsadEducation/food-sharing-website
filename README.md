@@ -1,7 +1,7 @@
-# Community Food Sharing and Surplus Reduction Platform (Client Side) 🍽️
+# Food Sharing Website 🍽️
 
 ## Project Overview 📊
-The Community Food Sharing and Surplus Reduction Platform (Client Side) is a React-based web application that enables users to donate or request food. The platform provides a seamless and secure way to manage food listings, food requests, and user authentication. It is built using modern technologies like React, Firebase, and Tailwind CSS.
+The **Food Sharing Website** (Client Side) is a React-based web application that enables users to donate or request food. The platform provides a seamless and secure way to manage food listings, food requests, and user authentication. It is built using modern technologies like React, Firebase, and Tailwind CSS.
 
 ### Live URL 🌐
 [Insert your live URL here]
@@ -55,13 +55,6 @@ The navbar contains the following links:
 - **Framer Motion Animations** 🌀: Add animations to enhance user experience.
 - **Custom Tailwind CSS Libraries** 🎨: Experiment with libraries like Shadcn, Mamba UI, or Chakra UI for a better design experience.
 
-## Development Guidelines 📝
-
-- **Commits**: At least 15 meaningful commits with descriptive messages.
-- **Responsiveness**: Ensure the website is fully responsive across mobile, tablet, and desktop.
-- **State Management**: Use Tanstack Query for API fetching and utilize mutations where necessary.
-- **JWT Authentication**: Implement JWT authentication to secure private routes and protect user data.
   
 ## Conclusion 🌍
 This project is a client-side React application that aims to help reduce food waste by providing a platform for users to share and request food. It incorporates modern web technologies to create an interactive, user-friendly, and secure experience. Enjoy contributing to the cause of reducing food waste! 🍽️
-
