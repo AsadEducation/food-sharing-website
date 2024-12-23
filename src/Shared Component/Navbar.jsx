@@ -1,6 +1,6 @@
-import React from 'react';
-import { NavLink } from 'react-router-dom';
 
+import { NavLink } from 'react-router-dom';
+import logo from '/FoodLogo2.jpg'
 const Navbar = () => {
 
     const links = (
@@ -68,7 +68,7 @@ const Navbar = () => {
         </div>
     );
     return (
-        <div className="navbar bg-base-100">
+        <div className="navbar bg-base-100 items-center">
             <div className="navbar-start">
                 <div className="dropdown">
                     <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -87,7 +87,7 @@ const Navbar = () => {
                     </div>
                     <ul
                         tabIndex={0}
-                        className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
+                        className="menu menu-sm dropdown-content rounded-box z-[1] mt-3 w-52 p-2 shadow">
 
                         {
                             links
@@ -95,7 +95,10 @@ const Navbar = () => {
 
                     </ul>
                 </div>
-                <a className="btn btn-ghost text-xl ">Food Sharing</a>
+                <div className='flex items-center justify-between'>
+                    <img className='w-10 h-10 rounded-full' src={logo} alt="" />
+                    <a className="btn btn-ghost text-xl text-[18px] font-bold italic">Food Sharing</a>
+                </div>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">
