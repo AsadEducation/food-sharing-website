@@ -6,40 +6,49 @@ import Home from '../Pages/Home/Home';
 import AuthLayout from '../Layout/AuthLayout';
 import Login from '../Pages/Auth/Login';
 import Register from '../Pages/Auth/Register';
+import AvailableFoods from '../Pages/AvaialbeFoods/AvailableFoods';
+import useAxiosSecure from '../Hooks/useAxiosSecure';
+
+const axiosInstance = useAxiosSecure();
 
 const Routes = createBrowserRouter([
     {
-        path:'',
-        element:<RootLayout/>,
+        path: '',
+        element: <RootLayout />,
 
-        children:[
+        children: [
             {
                 path: '',
                 element: <Navigate to="/home" replace={true} /> // Redirect root to '/home'
             },
             {
-                path:'home',
-                element:<Home/>
+                path: 'home',
+                element: <Home />
             },
             {
-                path:'auth',
-                element:<AuthLayout/>,
-                children:[
+                path:'available-foods',
+                element:<AvailableFoods/>,
+                loader:()=>axiosInstance.get('/available-foods'),
+            },
+            {
+                path: 'auth',
+                element: <AuthLayout />,
+                children: [
                     {
-                        path:'login',
-                        element:<Login/>
+                        path: 'login',
+                        element: <Login />
                     },
                     {
-                        path:'register',
-                        element:<Register/>
+                        path: 'register',
+                        element: <Register />
                     }
                 ]
             }
         ]
     },
     {
-        path:'*',
-        element:<ErrorPage/>
+        path: '*',
+        element: <ErrorPage />
     }
 ])
 

@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 
 const Register = () => {
 
-    const { createUser, googleLogin } = useAuth();
+    const { createUser, googleLogin, updateUserProfile } = useAuth();
 
     const handleFormSubmit = (e) => {
         e.preventDefault();
@@ -22,14 +22,15 @@ const Register = () => {
 
         // validating password
 
-        const passwordRegex = /^(?=.*[A-Z])(?=.*[a-z]).{6,}$/;
+        const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])[a-zA-Z\d!@#$%^&*()_+~`|}{[\]:;'<>,.?/-]{6,}$/;
 
-        if (!passwordRegex.test()) {
+
+        if (!passwordRegex.test(password)) {
             Swal.fire(
                 {
                     icon: 'warning',
                     title: 'Invalid Password',
-                    text:'Please Enter an uppercase and a lower case and password length must be 6'
+                    text: 'Please Enter an uppercase and a lower case and password length must be 6'
                 }
             )
             return;
@@ -52,6 +53,8 @@ const Register = () => {
                 if (result.user) {
                     showSuccess()
                     form.reset();
+                    //updating the user profile
+                    updateUserProfile({ displayName: name, photoURL: photoUrl })
                 }
             })
             .catch(err => {

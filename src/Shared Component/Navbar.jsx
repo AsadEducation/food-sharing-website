@@ -1,7 +1,10 @@
 
 import { NavLink } from 'react-router-dom';
 import logo from '/FoodLogo2.jpg'
+import { useAuth } from '../Hooks/useAuth';
 const Navbar = () => {
+
+    const { user, logoutUser } = useAuth();
 
     const links = (
         <div className="lg:flex space-x-5 font-bold">
@@ -19,7 +22,7 @@ const Navbar = () => {
             </li>
             <li>
                 <NavLink
-                    to="/"
+                    to="/available-foods"
                     className={({ isActive }) =>
                         isActive
                             ? "bg-green-400 text-white font-bold"
@@ -67,6 +70,16 @@ const Navbar = () => {
             </li>
         </div>
     );
+
+    const handleLogoutClicked = () => {
+        logoutUser()
+            .then(result => {
+                console.log('user logged out', result);
+            })
+            .catch(err => {
+                console.log(err);
+            })
+    }
     return (
         <div className="navbar bg-base-100 items-center">
             <div className="navbar-start">
@@ -110,7 +123,15 @@ const Navbar = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-                <NavLink to={'/auth/login'} className="btn bg-green-400">Login</NavLink>
+                {
+                    user ? <div className='flex gap-2 items-center'>
+                        <img className='h-10 w-10 rounded-full object-cover' src={user.photoURL} alt="" />
+                        <button onClick={handleLogoutClicked} className="btn bg-green-400">Logout</button>
+                    </div>
+
+                        :
+                        <NavLink to={'/auth/login'} className="btn bg-green-400">Login</NavLink>
+                }
             </div>
         </div>
     );
