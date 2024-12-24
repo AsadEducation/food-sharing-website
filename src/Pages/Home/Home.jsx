@@ -12,7 +12,7 @@ const Home = () => {
 
             <div className='mt-12 lg:mt-24'> <FeaturedFoods /></div>
 
-            {/* <div><FoodStorageLocation/></div> */}
+            <div><FoodStorageLocation/></div>
 
         </div>
     );
