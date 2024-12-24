@@ -1,8 +1,8 @@
 import React from 'react';
-import { Outlet } from 'react-router-dom';
 import FeaturedFoods from './FeaturedFoods';
 import Banner from './Banner';
 import FoodStorageLocation from './FoodStorageLocation';
+import FAQ from './FAQ';
 
 const Home = () => {
     return (
@@ -12,7 +12,9 @@ const Home = () => {
 
             <div className='mt-12 lg:mt-24'> <FeaturedFoods /></div>
 
-            <div><FoodStorageLocation/></div>
+            <div><FoodStorageLocation /></div>
+
+            <div> <FAQ /></div>
 
         </div>
     );
