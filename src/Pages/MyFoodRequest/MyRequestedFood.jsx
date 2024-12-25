@@ -37,7 +37,8 @@ const MyRequestedFood = () => {
                             const {
                                 pickup_location,
                                 expired_datetime,
-                                food_donator_name,                               
+                                food_donator_name, 
+                                food_requested_date                              
                             } = requestedFood;
 
                             console.log(requestedFood);
@@ -47,7 +48,7 @@ const MyRequestedFood = () => {
                                     <th>{expired_datetime}</th>
                                     <td>{food_donator_name}</td>
                                     <td>{pickup_location}</td>
-                                    <td>Purple</td>
+                                    <td>{food_requested_date}</td>
                                 </tr>
 
                             )

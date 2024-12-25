@@ -5,6 +5,7 @@ import Swal from 'sweetalert2';
 import { useAuth } from '../../Hooks/useAuth';
 import { FaPencil } from 'react-icons/fa6';
 import { SiVerizon } from 'react-icons/si';
+import moment from 'moment';
 
 
 const FoodDetails = () => {
@@ -42,7 +43,8 @@ const FoodDetails = () => {
     // inserting the email of food requestor in the food object
 
     data.food_requestor_email = user.email;
-    const requestedFood = { ...data };
+    const food_requested_date = moment().format("YYYY-MM-DD"); 
+    const requestedFood = { ...data, food_requested_date};
     // console.log('requested food ',requestedFood);
 
 
@@ -113,22 +115,26 @@ const FoodDetails = () => {
 
 
     const [editable, setEditable] = useState(false);
-    const [inputValue, setInputValue] = useState("");
+    const [inputValue, setInputValue] = useState(null);
 
 
     const handleEditPencil = (e) => {
-        setInputValue(e.target.value);
 
+        const value = e.target.value;
+
+        setInputValue(value);
     }
+
+    // console.log('inputValue', inputValue , 'type of inputValue ', typeof(inputValue));
 
 
     const handleSaveInputValue = () => {
 
-        if (inputValue.trim() !== "") {
+        // if (inputValue.trim() !== "") {
             axiosInstance.put(`/food-details/${_id}`, { value: inputValue })
                 .then(res => console.log(res.data))
                 .catch(err => console.error(err));
-        }
+        // }
     }
 
 
@@ -194,7 +200,7 @@ const FoodDetails = () => {
                                         </div>
                                     ) : (
                                         <div className='flex items-center gap-3'>
-                                            <span>{inputValue ? inputValue : additional_notes}</span>
+                                            <span> {inputValue  ? inputValue : additional_notes}</span>
                                             <button onClick={() => setEditable(true)}>
                                                 <FaPencil className='text-xl' />
                                             </button>

@@ -11,6 +11,7 @@ import useAxiosSecure from '../Hooks/useAxiosSecure';
 import FoodDetails from '../Pages/FoodDetails/FoodDetails';
 import Private from './Private';
 import MyRequestedFood from '../Pages/MyFoodRequest/MyRequestedFood';
+import AddFood from '../Pages/Add Food/AddFood';
 
 const axiosInstance = useAxiosSecure();
 
@@ -44,6 +45,10 @@ const Routes = createBrowserRouter([
                 element: <Private><MyRequestedFood /></Private>,
                 loader: ({ params }) => axiosInstance.get(`/requested-food/${params.email}`)
 
+            },
+            {
+                path:'add-food',
+                element:<Private><AddFood/></Private>
             },
             {
                 path: 'auth',
