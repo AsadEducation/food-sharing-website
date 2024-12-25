@@ -10,6 +10,7 @@ import AvailableFoods from '../Pages/AvaialbeFoods/AvailableFoods';
 import useAxiosSecure from '../Hooks/useAxiosSecure';
 import FoodDetails from '../Pages/FoodDetails/FoodDetails';
 import Private from './Private';
+import MyRequestedFood from '../Pages/MyFoodRequest/MyRequestedFood';
 
 const axiosInstance = useAxiosSecure();
 
@@ -36,6 +37,12 @@ const Routes = createBrowserRouter([
                 path: 'food-details/:id',
                 element: <Private><FoodDetails /></Private>,
                 loader: ({ params }) => axiosInstance.get(`/food-details/${params.id}`)
+
+            },
+            {
+                path: 'requested-food/:email',
+                element: <Private><MyRequestedFood /></Private>,
+                loader: ({ params }) => axiosInstance.get(`/requested-food/${params.email}`)
 
             },
             {

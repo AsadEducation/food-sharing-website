@@ -58,7 +58,7 @@ const Navbar = () => {
             </li>
             <li>
                 <NavLink
-                    to="/"
+                    to={`/requested-food/${user?.email}`}
                     className={({ isActive }) =>
                         isActive
                             ? "bg-green-400 text-white font-bold"
