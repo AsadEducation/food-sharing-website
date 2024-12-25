@@ -1,13 +1,29 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import useAxiosSecure from '../../Hooks/useAxiosSecure';
 import Swal from 'sweetalert2';
+import { useAuth } from '../../Hooks/useAuth';
+import { FaPencil } from 'react-icons/fa6';
+import { SiVerizon } from 'react-icons/si';
+
 
 const FoodDetails = () => {
 
     const axiosInstance = useAxiosSecure()
 
+    const { user } = useAuth();
+
+    // console.log(user);
+
     const { data } = useLoaderData();
+
+    //if the food/data is not available 
+
+    if (!data) {
+        return (
+            <h2 className='text-center text-5xl min-h-[50vh] flex flex-col justify-center items-center font-bold text-red-500'> You have Already Requested the Food . </h2>
+        )
+    }
 
     const {
         food_name,
@@ -23,7 +39,13 @@ const FoodDetails = () => {
         _id
     } = data;
 
-    // console.log(data);
+    // inserting the email of food requestor in the food object
+
+    data.food_requestor_email = user.email;
+    const requestedFood = { ...data };
+    // console.log('requested food ',requestedFood);
+
+
 
 
     const handleRequestFood = () => {
@@ -35,28 +57,51 @@ const FoodDetails = () => {
             showCancelButton: true,
             confirmButtonColor: "#3085d6",
             cancelButtonColor: "#d33",
-            confirmButtonText: "Yes, delete it!"
+            confirmButtonText: "Yes, Request Food!"
         }).then((result) => {
             if (result.isConfirmed) {
 
 
                 Swal.fire({
-                    title: "Deleted!",
-                    text: "Your file has been deleted.",
+                    title: "Requested!",
+                    text: "Your Food Request is Confirmed.",
                     icon: "success"
                 });
 
-                //sending delete request to the server
+                //sending delete request to the server to delete it from foodCollection
 
 
                 axiosInstance.delete(`/available-foods/${_id}`)
                     .then(res => {
 
-                        // if successfully deleted the item .
+                        // if successfully deleted the item , will add the item in request collection 
+                        // console.log(res.data);
 
-                        console.log(res.data);
+                        if (res.data.deletedCount) {
+                            // sending requested food through post api 
+
+                            //updating the food status as requested
+
+                            requestedFood.food_status = "requested";
+
+
+                            axiosInstance.post('/requested-food', requestedFood)
+                                .then(res => {
+                                    if (res.data.insertedId) {
+
+                                        Swal.fire(
+                                            {
+                                                icon: 'success',
+                                                title: 'Added to your requested Food list',
+                                            }
+                                        )
+                                    }
+                                })
+                                .catch(err => console.log(err))
+
+                        }
                     })
-                    .catch(err=>{
+                    .catch(err => {
 
                         console.log(err);
                     })
@@ -64,6 +109,29 @@ const FoodDetails = () => {
         });
 
     }
+
+
+
+    const [editable, setEditable] = useState(false);
+    const [inputValue, setInputValue] = useState("");
+
+
+    const handleEditPencil = (e) => {
+        setInputValue(e.target.value);
+
+    }
+
+
+    const handleSaveInputValue = () => {
+
+        if (inputValue.trim() !== "") {
+            axiosInstance.put(`/food-details/${_id}`, { value: inputValue })
+                .then(res => console.log(res.data))
+                .catch(err => console.error(err));
+        }
+    }
+
+
 
 
 
@@ -104,10 +172,38 @@ const FoodDetails = () => {
                             <span className="font-medium">Expires on:</span> {expired_datetime}
                         </li>
                         {additional_notes && (
-                            <li>
-                                <span className="font-medium">Additional Notes:</span>{' '}
-                                {additional_notes}
+
+                            <li className='flex gap-4 items-center'>
+                                <span className="font-medium">Additional Notes:</span>
+                                {
+                                    editable ? (
+                                        <div className='flex items-center gap-2'>
+                                            <input
+                                                type="text"
+                                                onChange={handleEditPencil}
+                                                placeholder="Enter Additional Notes"
+                                                required
+                                                className="input input-bordered w-full max-w-xs"
+                                            />
+                                            <button onClick={() => {
+                                                setEditable(false)
+                                                handleSaveInputValue()
+                                            }} className='text-xl text-green-500'>
+                                                <SiVerizon />
+                                            </button>
+                                        </div>
+                                    ) : (
+                                        <div className='flex items-center gap-3'>
+                                            <span>{inputValue ? inputValue : additional_notes}</span>
+                                            <button onClick={() => setEditable(true)}>
+                                                <FaPencil className='text-xl' />
+                                            </button>
+                                        </div>
+                                    )
+                                }
                             </li>
+
+
                         )}
                     </ul>
                 </div>
@@ -135,7 +231,7 @@ const FoodDetails = () => {
                     </button>
                 </div>
             </div>
-        </div>
+        </div >
     );
 };
 
