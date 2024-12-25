@@ -1,6 +1,6 @@
 import Lottie from 'lottie-react';
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import logInLottie from '../../assets/Lottie/login-lottie.json'
 import { useAuth } from '../../Hooks/useAuth';
 import Swal from 'sweetalert2';
@@ -8,6 +8,12 @@ import Swal from 'sweetalert2';
 const Login = () => {
 
     const { loginUser } = useAuth();
+
+    const navigate = useNavigate();
+
+    const { state } = useLocation();
+
+    const desiredLocation = state || '/';
 
 
     const handleFormSubmit = (e) => {
@@ -29,6 +35,8 @@ const Login = () => {
                         }
                     )
                     form.reset();
+                    // navigating to desired location 
+                    navigate(desiredLocation);
                 }
             })
             .catch(err => {
@@ -45,6 +53,8 @@ const Login = () => {
                         title: 'Google Login Successful'
                     }
                 )
+                // navigating to desired location 
+                navigate(desiredLocation);
             })
     }
 

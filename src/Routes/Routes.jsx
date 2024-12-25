@@ -8,6 +8,8 @@ import Login from '../Pages/Auth/Login';
 import Register from '../Pages/Auth/Register';
 import AvailableFoods from '../Pages/AvaialbeFoods/AvailableFoods';
 import useAxiosSecure from '../Hooks/useAxiosSecure';
+import FoodDetails from '../Pages/FoodDetails/FoodDetails';
+import Private from './Private';
 
 const axiosInstance = useAxiosSecure();
 
@@ -26,9 +28,15 @@ const Routes = createBrowserRouter([
                 element: <Home />
             },
             {
-                path:'available-foods',
-                element:<AvailableFoods/>,
-                loader:()=>axiosInstance.get('/available-foods'),
+                path: 'available-foods',
+                element: <AvailableFoods />,
+                loader: () => axiosInstance.get('/available-foods'),
+            },
+            {
+                path: 'food-details/:id',
+                element: <Private><FoodDetails /></Private>,
+                loader: ({ params }) => axiosInstance.get(`/food-details/${params.id}`)
+
             },
             {
                 path: 'auth',
