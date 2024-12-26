@@ -48,9 +48,9 @@ const AddFood = () => {
     }
 
     return (
-        <div className='w-[80%] lg:w-[50%] mx-auto'>
+        <div className='w-[99%] lg:w-[50%] my-8 lg:my-12 mx-auto'>
 
-            <h2 className="text-4xl font-bold text-center text-gray-500">Add Foods </h2>
+            <h2 className="text-3xl lg:text-5xl font-bold text-center text-gray-600">Add Foods </h2>
 
             <FoodForm
               onSubmit={handleAddFoodSubmit}

@@ -8,13 +8,13 @@ const Home = () => {
     return (
         <div>
 
-            <div className='mt-12 lg:mt-24'> <Banner /></div>
+            <div className='mt-8 lg:mt-12'> <Banner /></div>
 
-            <div className='mt-12 lg:mt-24'> <FeaturedFoods /></div>
+            <div className='mt-8 lg:mt-12'> <FeaturedFoods /></div>
 
-            <div><FoodStorageLocation /></div>
+            <div className='mt-8 lg:mt-12'><FoodStorageLocation /></div>
 
-            <div> <FAQ /></div>
+            <div className='mt-8 lg:mt-12'> <FAQ /></div>
 
         </div>
     );

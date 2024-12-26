@@ -8,11 +8,11 @@ const FoodCard = ({ food }) => {
     const { food_name, food_image, food_quantity, food_status, expired_datetime, pickup_location,_id } = food;
 
     return (
-        <div className="bg-white border border-gray-200 rounded-lg shadow-md p-4 max-w-sm hover:shadow-lg transition-shadow duration-300">
+        <div className="bg-white border border-gray-200 rounded-lg shadow-md p-2 w-[90%] mx-auto hover:shadow-lg transition-shadow duration-300">
             <img
                 src={food_image}
                 alt={food_name}
-                className="rounded-lg w-full h-40 object-cover mb-4"
+                className="rounded-lg w-full h-60 object-cover mb-4"
             />
             <h2 className="text-lg font-bold text-gray-800 mb-2">{food_name}</h2>
             <p className="text-sm text-gray-600 mb-1">

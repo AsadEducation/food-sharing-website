@@ -21,9 +21,9 @@ const FeaturedFoods = () => {
 
     return (
         <div className='space-y-12'>
-            <h2 className="text-4xl text-center font-bold">Featured Food</h2>
+            <h2 className="text-3xl lg:text-5xl text-center font-bold">Featured Food</h2>
 
-            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3'>
+            <div className='grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3'>
                 {
                     hotFoods.map((hotFood, index) => {
 
