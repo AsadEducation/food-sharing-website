@@ -44,9 +44,20 @@ const AuthProvider = ({ children }) => {
 
         const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
 
-            setLoading(false);
+
             setUser(currentUser);
 
+            if (currentUser) {
+                const user = { email: currentUser.email };
+                axios.post('http://localhost:5000/jwt', user, { withCredentials: true })
+                    .then(res => console.log(res.data));
+            }
+            else {
+                axios.post(`http://localhost:5000/logout`, {}, { withCredentials: true })
+                    .then(res => console.log(res.data));
+            }
+            
+            setLoading(false);
         })
 
         return () => {
