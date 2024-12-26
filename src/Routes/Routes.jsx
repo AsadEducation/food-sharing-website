@@ -12,64 +12,79 @@ import FoodDetails from '../Pages/FoodDetails/FoodDetails';
 import Private from './Private';
 import MyRequestedFood from '../Pages/MyFoodRequest/MyRequestedFood';
 import AddFood from '../Pages/Add Food/AddFood';
+import MyAddedFoods from '../Pages/My Added Foods/MyAddedFoods';
+import { useAuth } from '../Hooks/useAuth';
+import UpdateFood from '../Pages/UpdateFood/UpdateFood';
 
 const axiosInstance = useAxiosSecure();
 
-const Routes = createBrowserRouter([
-    {
-        path: '',
-        element: <RootLayout />,
 
-        children: [
-            {
-                path: '',
-                element: <Navigate to="/home" replace={true} /> // Redirect root to '/home'
-            },
-            {
-                path: 'home',
-                element: <Home />
-            },
-            {
-                path: 'available-foods',
-                element: <AvailableFoods />,
-                loader: () => axiosInstance.get('/available-foods'),
-            },
-            {
-                path: 'food-details/:id',
-                element: <Private><FoodDetails /></Private>,
-                loader: ({ params }) => axiosInstance.get(`/food-details/${params.id}`)
 
-            },
-            {
-                path: 'requested-food/:email',
-                element: <Private><MyRequestedFood /></Private>,
-                loader: ({ params }) => axiosInstance.get(`/requested-food/${params.email}`)
+const Routes = createBrowserRouter(
 
-            },
-            {
-                path:'add-food',
-                element:<Private><AddFood/></Private>
-            },
-            {
-                path: 'auth',
-                element: <AuthLayout />,
-                children: [
-                    {
-                        path: 'login',
-                        element: <Login />
-                    },
-                    {
-                        path: 'register',
-                        element: <Register />
-                    }
-                ]
-            }
-        ]
-    },
-    {
-        path: '*',
-        element: <ErrorPage />
-    }
-])
+    [
+        {
+            path: '',
+            element: <RootLayout />,
+
+            children: [
+                {
+                    path: '',
+                    element: <Navigate to="/home" replace={true} /> // Redirect root to '/home'
+                },
+                {
+                    path: 'home',
+                    element: <Home />
+                },
+                {
+                    path: 'available-foods',
+                    element: <AvailableFoods />,
+                    loader: () => axiosInstance.get('/available-foods'),
+                },
+                {
+                    path: 'food-details/:id',
+                    element: <Private><FoodDetails /></Private>,
+                    loader: ({ params }) => axiosInstance.get(`/food-details/${params.id}`)
+
+                },
+                {
+                    path: 'requested-food/:email',
+                    element: <Private><MyRequestedFood /></Private>,
+                    loader: ({ params }) => axiosInstance.get(`/requested-food/${params.email}`)
+
+                },
+                {
+                    path: 'add-food',
+                    element: <Private><AddFood /></Private>
+                },
+                {
+                    path: 'my-added-foods',
+                    element: <Private><MyAddedFoods /></Private>,
+                },
+                {
+                    path: 'update-food',
+                    element: <Private><UpdateFood /></Private>,
+                },
+                {
+                    path: 'auth',
+                    element: <AuthLayout />,
+                    children: [
+                        {
+                            path: 'login',
+                            element: <Login />
+                        },
+                        {
+                            path: 'register',
+                            element: <Register />
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            path: '*',
+            element: <ErrorPage />
+        }
+    ])
 
 export default Routes;
