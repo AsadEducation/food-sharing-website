@@ -10,6 +10,8 @@ const AvailableFoods = () => {
 
     const [availableFoods, setAvailableFoods] = useState([]);
 
+    const [changeLayout, setChangeLayout] = useState(true);
+
     useEffect(() => {
 
         setAvailableFoods(data);
@@ -21,7 +23,14 @@ const AvailableFoods = () => {
         <div>
             <h2 className="text-4xl text-center font-bold">Available Foods</h2>
 
-            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3'>
+            <button
+                onClick={() => setChangeLayout(!changeLayout)}
+                className="btn btn-primary mx-auto my-4 block"
+            >
+                Toggle Layout
+            </button>
+
+            <div className={`grid grid-cols-1 md:grid-cols-2 ${changeLayout ? `lg:grid-cols-3` : `lg:grid-cols-2`}`}>
                 {
                     availableFoods.map((availableFood, index) => {
 

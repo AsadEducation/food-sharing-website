@@ -13,7 +13,10 @@ const AddFood = () => {
 
     const { user } = useAuth();
 
+    // console.log(user);
+
     const food_donator_email = user.email;
+    const food_donator_image = user.photoURL;
 
     const handleAddFoodSubmit = (e) => {
 
@@ -23,6 +26,8 @@ const AddFood = () => {
         const temp = formData.entries();
 
         const addedFood = Object.fromEntries(temp);
+
+        addedFood.food_quantity = parseInt(addedFood.food_quantity)
 
         console.log(addedFood);
 
@@ -49,7 +54,7 @@ const AddFood = () => {
 
             <FoodForm
               onSubmit={handleAddFoodSubmit}
-              defaultValues={{food_donator_email}}
+              defaultValues={{food_donator_email,food_donator_image}}
               isEditMode={false}
             />
 
