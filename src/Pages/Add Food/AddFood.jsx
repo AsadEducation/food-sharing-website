@@ -3,6 +3,7 @@ import useAxiosSecure from '../../Hooks/useAxiosSecure';
 import Swal from 'sweetalert2';
 import { useAuth } from '../../Hooks/useAuth';
 import FoodForm from '../../Shared Component/FoodForm';
+import { useNavigate } from 'react-router-dom';
 
 
 
@@ -12,6 +13,8 @@ const AddFood = () => {
     const axiosInstance = useAxiosSecure();
 
     const { user } = useAuth();
+
+    const navigate = useNavigate();
 
     // console.log(user);
 
@@ -29,19 +32,23 @@ const AddFood = () => {
 
         addedFood.food_quantity = parseInt(addedFood.food_quantity)
 
-        console.log(addedFood);
+        // console.log(addedFood);
 
         //sending the object in the server to add to db
 
         axiosInstance.post('/add-food', addedFood)
             .then(res => {
                 if (res.data.insertedId) {
+
                     Swal.fire(
                         {
                             icon: 'success',
                             title: 'Your Food is Added SuccessFully',
                         }
                     )
+
+                    navigate('/my-added-foods');
+
                 }
             })
 

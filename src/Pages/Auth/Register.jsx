@@ -49,7 +49,7 @@ const Register = () => {
 
         createUser(email, password)
             .then(result => {
-                console.log(result.user);
+                // console.log(result.user);
                 if (result.user) {
                     showSuccess()
                     form.reset();
@@ -58,7 +58,7 @@ const Register = () => {
                 }
             })
             .catch(err => {
-                console.log(err)
+                // console.log(err)
             })
 
     }
@@ -139,9 +139,12 @@ const Register = () => {
 
                             </div>
                             <input type="password" name="password" id="password" required placeholder="*****" className="w-full px-3 py-2 border rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800 focus:dark:border-green-600" />
+
+                            <label htmlFor="password" className="text-[11px] text-blue-400">Please Enter an uppercase and a lower case and password length must be 6</label>
+
                         </div>
                     </div>
-                    <button className="w-full px-8 py-3 font-semibold rounded-md dark:text-gray-50 dark:bg-green-600">Register</button>
+                    <button className="w-full px-8 py-3 font-semibold rounded-md bg-green-600">Register</button>
                 </form>
             </div>
 

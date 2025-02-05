@@ -2,6 +2,7 @@
 import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup, signOut, updateProfile } from "firebase/auth";
 import { createContext, useCallback, useEffect, useState } from "react";
 import auth from "../Firebase/firebase";
+import useAxiosSecure from "../Hooks/useAxiosSecure";
 
 
 
@@ -12,6 +13,8 @@ const AuthProvider = ({ children }) => {
 
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
+
+    const axiosInstance = useAxiosSecure();
 
     const createUser = useCallback(
         (email, password) => {
@@ -47,16 +50,22 @@ const AuthProvider = ({ children }) => {
 
             setUser(currentUser);
 
+            //token checking part 
+
             if (currentUser) {
-                const user = { email: currentUser.email };
-                axios.post('http://localhost:5000/jwt', user, { withCredentials: true })
-                    .then(res => console.log(res.data));
+                const userPrime = { email: currentUser.email };
+                axiosInstance.post('/jwt', userPrime)
+                    .then(res => {
+                        // console.log('login',res.data)
+                    });
             }
             else {
-                axios.post(`http://localhost:5000/logout`, {}, { withCredentials: true })
-                    .then(res => console.log(res.data));
+                axiosInstance.post(`/logout`, {})
+                    .then(res => {
+                        // console.log('logout', res.data)
+                    })
             }
-            
+
             setLoading(false);
         })
 

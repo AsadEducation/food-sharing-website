@@ -7,7 +7,7 @@ import Swal from 'sweetalert2';
 
 const Login = () => {
 
-    const { loginUser } = useAuth();
+    const { loginUser, googleLogin } = useAuth();
 
     const navigate = useNavigate();
 
@@ -26,7 +26,7 @@ const Login = () => {
 
         loginUser(email, password)
             .then(res => {
-                console.log(res.user);
+                // console.log(res.user);
                 if (res.user) {
                     Swal.fire(
                         {
@@ -40,7 +40,12 @@ const Login = () => {
                 }
             })
             .catch(err => {
-                console.log(err)
+                Swal.fire(
+                    {
+                        icon: 'error',
+                        title:err.message,
+                    }
+                )
             })
     }
 
@@ -104,7 +109,7 @@ const Login = () => {
                             <input type="password" name="password" id="password" required placeholder="*****" className="w-full px-3 py-2 border rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800 focus:dark:border-violet-600" />
                         </div>
                     </div>
-                    <button className="w-full px-8 py-3 font-semibold rounded-md dark:text-gray-50 dark:bg-green-600">Sign in</button>
+                    <button className="w-full px-8 py-3 font-semibold rounded-md bg-green-600">Sign in</button>
                 </form>
             </div>
 

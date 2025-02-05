@@ -1,6 +1,6 @@
 import React from 'react';
 import FoodForm from '../../Shared Component/FoodForm';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import useAxiosSecure from '../../Hooks/useAxiosSecure';
 import Swal from 'sweetalert2';
 
@@ -10,6 +10,9 @@ const UpdateFood = () => {
     const axiosInstance = useAxiosSecure();
 
     const { state } = useLocation();
+
+    const navigate = useNavigate();
+
     // console.log(state);
 
     const handleUpdateSubmit = (e) => {
@@ -28,13 +31,15 @@ const UpdateFood = () => {
 
         axiosInstance.put(`/add-food/${state._id}`, updatedFood)
             .then(res => {
-                if(res.data.modifiedCount){
+                if (res.data.modifiedCount) {
                     Swal.fire(
                         {
-                            icon:'success',
-                            title:'Updated Your Food Successfully'
+                            icon: 'success',
+                            title: 'Updated Your Food Successfully'
                         }
                     )
+
+                    navigate('/my-added-foods');
                 }
             })
 

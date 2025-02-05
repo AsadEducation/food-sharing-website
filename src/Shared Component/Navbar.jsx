@@ -22,6 +22,18 @@ const Navbar = () => {
             </li>
             <li>
                 <NavLink
+                    to="/all-foods"
+                    className={({ isActive }) =>
+                        isActive
+                            ? "bg-green-400 text-white font-bold" // Active styles
+                            : "hover:bg-green-400 text-gray-700" // Inactive styles
+                    }
+                >
+                    All Foods
+                </NavLink>
+            </li>
+            <li>
+                <NavLink
                     to="/available-foods"
                     className={({ isActive }) =>
                         isActive
@@ -58,7 +70,7 @@ const Navbar = () => {
             </li>
             <li>
                 <NavLink
-                    to={`/requested-food/${user?.email}`}
+                    to={`/my-requested-food`}
                     className={({ isActive }) =>
                         isActive
                             ? "bg-green-400 text-white font-bold"
@@ -74,10 +86,10 @@ const Navbar = () => {
     const handleLogoutClicked = () => {
         logoutUser()
             .then(result => {
-                console.log('user logged out', result);
+                // console.log('user logged out', result);
             })
             .catch(err => {
-                console.log(err);
+                // console.log(err);
             })
     }
     return (
@@ -100,7 +112,7 @@ const Navbar = () => {
                     </div>
                     <ul
                         tabIndex={0}
-                        className="menu menu-sm dropdown-content rounded-box z-[1] mt-3 w-52 p-2 shadow">
+                        className="menu menu-sm dropdown-content bg-slate-400 rounded-box z-[1] mt-3 w-52 p-2 shadow">
 
                         {
                             links
@@ -110,7 +122,7 @@ const Navbar = () => {
                 </div>
                 <div className='flex items-center justify-between'>
                     <img className='w-10 h-10 rounded-full' src={logo} alt="" />
-                    <a className="btn btn-ghost text-xl text-[18px] font-bold italic">Food Sharing</a>
+                    <NavLink to={`/home`} className="btn btn-ghost text-xl text-[18px] font-bold italic">Food Sharing</NavLink>
                 </div>
             </div>
             <div className="navbar-center hidden lg:flex">

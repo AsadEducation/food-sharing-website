@@ -15,6 +15,7 @@ import AddFood from '../Pages/Add Food/AddFood';
 import MyAddedFoods from '../Pages/My Added Foods/MyAddedFoods';
 import { useAuth } from '../Hooks/useAuth';
 import UpdateFood from '../Pages/UpdateFood/UpdateFood';
+import AllFoods from '../Pages/All Foods/AllFoods';
 
 const axiosInstance = useAxiosSecure();
 
@@ -26,7 +27,7 @@ const Routes = createBrowserRouter(
         {
             path: '',
             element: <RootLayout />,
-
+            errorElement:<ErrorPage></ErrorPage>,
             children: [
                 {
                     path: '',
@@ -37,6 +38,10 @@ const Routes = createBrowserRouter(
                     element: <Home />
                 },
                 {
+                    path: 'all-foods',
+                    element:<AllFoods/>
+                },
+                {
                     path: 'available-foods',
                     element: <AvailableFoods />,
                     loader: () => axiosInstance.get('/available-foods'),
@@ -44,13 +49,13 @@ const Routes = createBrowserRouter(
                 {
                     path: 'food-details/:id',
                     element: <Private><FoodDetails /></Private>,
-                    loader: ({ params }) => axiosInstance.get(`/food-details/${params.id}`)
+                    
 
                 },
                 {
-                    path: 'requested-food/:email',
+                    path: 'my-requested-food',
                     element: <Private><MyRequestedFood /></Private>,
-                    loader: ({ params }) => axiosInstance.get(`/requested-food/${params.email}`)
+                  
 
                 },
                 {
@@ -81,10 +86,10 @@ const Routes = createBrowserRouter(
                 }
             ]
         },
-        {
-            path: '*',
-            element: <ErrorPage />
-        }
+        // {
+        //     path: '*',
+        //     element: <ErrorPage />
+        // }
     ])
 
 export default Routes;

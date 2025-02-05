@@ -48,6 +48,12 @@ const MyAddedFoods = () => {
                                 text: "Your file has been deleted.",
                                 icon: "success"
                             });
+
+                            //resetting the state 
+
+                            const newAddedList = myAddedFoods.filter((myAddedFood) => myAddedFood._id !== _id);
+
+                            setMyAddedFoods(newAddedList);
                         }
                     })
             }
@@ -57,7 +63,7 @@ const MyAddedFoods = () => {
 
 
     return (
-        <div className="overflow-x-auto">
+        <div className="overflow-x-auto min-h-[60vh]">
             <table className="table">
                 {/* head */}
                 <thead>

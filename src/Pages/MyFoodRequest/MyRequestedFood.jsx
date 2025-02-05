@@ -1,15 +1,24 @@
 import React, { useEffect, useState } from 'react';
-import { useLoaderData } from 'react-router-dom';
+import { useLoaderData, useParams } from 'react-router-dom';
+import useAxiosSecure from '../../Hooks/useAxiosSecure';
+import { useAuth } from '../../Hooks/useAuth';
 
 const MyRequestedFood = () => {
 
-    const { data } = useLoaderData();
+
+
+    const axiosInstance = useAxiosSecure();
 
     const [requestedFoods, setRequestedFoods] = useState([]);
 
+    const {user} = useAuth();
+
+
     useEffect(() => {
 
-        setRequestedFoods(data);
+
+        axiosInstance.get(`/requested-food/${user.email}`)
+        .then(res=>setRequestedFoods(res.data))
 
     }, [])
 
@@ -17,7 +26,7 @@ const MyRequestedFood = () => {
 
 
     return (
-        <div className="overflow-x-auto">
+        <div className="overflow-x-auto min-h-[60vh]">
             <table className="table">
                 {/* head */}
                 <thead>
@@ -32,16 +41,16 @@ const MyRequestedFood = () => {
 
                     {
                         requestedFoods.map((requestedFood, index) => {
-                            {/* table  row / cell  */}
+                            {/* table  row / cell  */ }
 
                             const {
                                 pickup_location,
                                 expired_datetime,
-                                food_donator_name, 
-                                food_requested_date                              
+                                food_donator_name,
+                                food_requested_date
                             } = requestedFood;
 
-                            console.log(requestedFood);
+                            // console.log(requestedFood);
 
                             return (
                                 <tr key={index} className="hover">

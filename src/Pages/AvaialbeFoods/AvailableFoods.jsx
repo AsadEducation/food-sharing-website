@@ -52,7 +52,7 @@ const AvailableFoods = () => {
             <div className="lg:flex justify-between lg:px-6 items-center">
                 <button
                     onClick={() => setChangeLayout(!changeLayout)}
-                    className="btn btn-primary my-4 block"
+                    className="btn btn-primary my-4 hidden  lg:block"
                 >
                     Toggle Layout
                 </button>

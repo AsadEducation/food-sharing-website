@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useLoaderData } from 'react-router-dom';
+import { useLoaderData, useParams } from 'react-router-dom';
 import useAxiosSecure from '../../Hooks/useAxiosSecure';
 import Swal from 'sweetalert2';
 import { useAuth } from '../../Hooks/useAuth';
@@ -10,13 +10,31 @@ import moment from 'moment';
 
 const FoodDetails = () => {
 
-    const axiosInstance = useAxiosSecure()
+    const axiosInstance = useAxiosSecure();
 
-    const { user } = useAuth();
+    const { user } = useAuth();    // console.log(user);
 
-    // console.log(user);
+    const { id } = useParams();  // console.log(id);
 
-    const { data } = useLoaderData();
+
+
+    //fetching data from the server 
+
+    const [data, setData]= useState([]);
+
+    useEffect(() => {
+
+        axiosInstance.get(`/food-details/${id}`)
+
+            .then(res => setData(res.data))
+
+            .catch(err => {
+                console.log(err);
+            })
+
+    }, [])
+
+    // console.log(data)
 
     //if the food/data is not available 
 
@@ -43,8 +61,8 @@ const FoodDetails = () => {
     // inserting the email of food requestor in the food object
 
     data.food_requestor_email = user.email;
-    const food_requested_date = moment().format("YYYY-MM-DD"); 
-    const requestedFood = { ...data, food_requested_date};
+    const food_requested_date = moment().format("YYYY-MM-DD");
+    const requestedFood = { ...data, food_requested_date };
     // console.log('requested food ',requestedFood);
 
 
@@ -105,7 +123,7 @@ const FoodDetails = () => {
                     })
                     .catch(err => {
 
-                        console.log(err);
+                        // console.log(err);
                     })
             }
         });
@@ -131,9 +149,9 @@ const FoodDetails = () => {
     const handleSaveInputValue = () => {
 
         // if (inputValue.trim() !== "") {
-            axiosInstance.put(`/food-details/${_id}`, { value: inputValue })
-                .then(res => console.log(res.data))
-                .catch(err => console.error(err));
+        axiosInstance.put(`/food-details/${_id}`, { value: inputValue })
+            .then(res => console.log(res.data))
+            .catch(err => console.error(err));
         // }
     }
 
@@ -200,7 +218,7 @@ const FoodDetails = () => {
                                         </div>
                                     ) : (
                                         <div className='flex items-center gap-3'>
-                                            <span> {inputValue  ? inputValue : additional_notes}</span>
+                                            <span> {inputValue ? inputValue : additional_notes}</span>
                                             <button onClick={() => setEditable(true)}>
                                                 <FaPencil className='text-xl' />
                                             </button>

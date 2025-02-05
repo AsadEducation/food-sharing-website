@@ -132,6 +132,7 @@ const FoodForm = ({ onSubmit, defaultValues, isEditMode }) => {
                     type="url"
                     placeholder="http://image.com/"
                     className="input input-bordered"
+                    readOnly
                     name="food_donator_image"
                     defaultValue={defaultValues?.food_donator_image || ''}
                     required
@@ -144,6 +145,7 @@ const FoodForm = ({ onSubmit, defaultValues, isEditMode }) => {
                 <input
                     type="email"
                     className="input input-bordered"
+                    readOnly
                     name="food_donator_email"
                     defaultValue={defaultValues?.food_donator_email || ''}
                 />

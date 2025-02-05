@@ -6,9 +6,9 @@ import Footer from '../Shared Component/Footer';
 const RootLayout = () => {
     return (
         <div>
-             <Navbar/>
-            <div className='w-11/12 mx-auto '><Outlet/></div>
-            <div className='mt-t lg:mt-12'> <Footer/></div>
+             {/* <Navbar/> */}
+            <div className=''><Outlet/></div>
+            {/* <div className='mt-t lg:mt-12'> <Footer/></div> */}
         </div>
     );
 };
