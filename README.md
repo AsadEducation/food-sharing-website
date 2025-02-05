@@ -4,7 +4,7 @@
 The **Food Sharing Website** (Client Side) is a React-based web application that enables users to donate or request food. The platform provides a seamless and secure way to manage food listings, food requests, and user authentication. It is built using modern technologies like React, Firebase, and Tailwind CSS.
 
 ### Live URL 🌐
-[Insert your live URL here]
+[https://food-sharing-32.web.app]
 
 ## Key Features 🌟
 - **User Authentication** 🔒: Email/password-based login and registration with social login options (Google/GitHub).
