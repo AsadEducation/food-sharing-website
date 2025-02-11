@@ -11,11 +11,11 @@ const Home = () => {
 
             <div className='mt-32'> <Banner /></div>
 
-            <div className=''> <FeaturedFoods /></div>
+            <div className='md:w-11/12 mx-auto'> <FeaturedFoods /></div>
 
-            <div className=''><FoodStorageLocation /></div>
+            <div className='md:w-11/12 mx-auto'><FoodStorageLocation /></div>
 
-            <div className=''> <FAQ /></div>
+            <div className='md:w-11/12 mx-auto'> <FAQ /></div>
 
 
         </div>

@@ -5,35 +5,43 @@ const FoodCard = ({ food }) => {
 
     // console.log(food);
 
-    const { food_name, food_image, food_quantity, food_status, expired_datetime, pickup_location,_id } = food;
+    const { food_name, food_image, food_quantity, food_status, expired_datetime, pickup_location, _id } = food;
 
     return (
-        <div className="bg-white border border-gray-200 rounded-lg shadow-md p-2 w-[90%] mx-auto hover:shadow-lg transition-shadow duration-300">
+        <div className="bg-white border border-gray-200 rounded-lg shadow-md p-2 lg:p-4 lg:w-[87%]  mx-auto space-y-2 md:space-y-4 hover:shadow-lg transition-shadow duration-300">
             <img
                 src={food_image}
                 alt={food_name}
-                className="rounded-lg w-full h-60 object-cover mb-4"
+                className="rounded-lg w-full h-60 object-cover"
             />
-            <h2 className="text-lg font-bold text-gray-800 mb-2">{food_name}</h2>
-            <p className="text-sm text-gray-600 mb-1">
-                <span className="font-semibold">Quantity:</span> {food_quantity}
-            </p>
-            <p className="text-sm text-gray-600 mb-1">
-                <span className="font-semibold">Pickup Location:</span> {pickup_location}
-            </p>
-            <p className="text-sm text-gray-600 mb-1">
-                <span className="font-semibold">Expired Date:</span> {expired_datetime}
-            </p>
+            <h2 className="text-lg font-bold text-gray-800 ">{food_name}</h2>
+            {/* paragraphs  */}
+            <div className="space-y-2">
+                <p className="text-sm text-gray-600 ">
+                    <span className="font-semibold">Quantity:</span> {food_quantity}
+                </p>
+                <p className="text-sm text-gray-600 ">
+                    <span className="font-semibold">Pickup Location:</span> {pickup_location}
+                </p>
+                <p className="text-sm text-gray-600 ">
+                    <span className="font-semibold">Expired Date:</span> {expired_datetime}
+                </p>
+
+            </div>
+
+            {/* food status  */}
+
             <p
-                className={`text-sm font-semibold mt-2 ${food_status === "available"
+                className={`text-sm font-semibold ${food_status === "available"
                     ? "text-green-500"
                     : "text-red-500"
                     }`}
             >
                 Status: {food_status}
             </p>
+
             <Link to={`/food-details/${_id}`}>
-                <button className="btn bg-green-300">Details</button>
+                <button className="btn bg-green-300 mt-2 md:mt-5">Details</button>
             </Link>
         </div>
 
