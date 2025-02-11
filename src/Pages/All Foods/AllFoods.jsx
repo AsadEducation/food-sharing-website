@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import useFoods from '../../Hooks/useFoods';
 import FoodCard from '../../Shared Component/FoodCard';
+import Title from '../../Shared Component/title/Title';
 
 const AllFoods = () => {
 
@@ -21,15 +22,16 @@ const AllFoods = () => {
     }
 
     return (
-        <div className='space-y-12 mt-20 min-h-screen lg:w-11/12 mx-auto'>
+        <div className='space-y-12 min-h-screen'>
 
-            <h2 className="text-3xl lg:text-5xl text-green-500 font-bold text-center">All Foods </h2>
+            {/* <h2 className="text-3xl lg:text-5xl font-semibold text-center">All Foods </h2> */}
+            <Title text="all foods"/>
 
-            <div className='w-11/12 mx-auto flex items-center justify-between'>
-                <button onClick={() => setSorted(!sorted)} className={`btn ${sorted ? 'btn-success' : 'btn-neutral'}`}>{
+            <div className='w-11/12 mx-auto lg:flex gap-[50vw] items-center justify-between'>
+                <button onClick={() => setSorted(!sorted)} className={`btn flex-1 w-full ${sorted ? 'bg-green-400 text-black' : 'bg-gray-500 text-white'}`}>{
                     sorted ? 'sorted' : 'sort by expires'}</button>
 
-                <label className="input input-bordered flex items-center gap-2">
+                <label className="input input-bordered flex flex-1 w-full items-center gap-2">
                     <input type="text" onChange={(e)=>{
                         setSearch(e.target.value);
 

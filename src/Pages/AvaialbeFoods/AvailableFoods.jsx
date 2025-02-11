@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import FoodCard from "../../Shared Component/FoodCard";
+import Title from "../../Shared Component/title/Title";
 
 
 const AvailableFoods = () => {
@@ -46,8 +47,9 @@ const AvailableFoods = () => {
 
 
     return (
-        <div className="my-8 lg:my-12 space-y-8 lg:space-y-12 ">
-            <h2 className="text-3xl lg:text-5xl text-center font-bold">Available Foods</h2>
+        <div className="space-y-8 lg:space-y-12 ">
+            
+            <Title text={"available foods"}/>
 
             <div className="lg:flex justify-between lg:px-6 items-center">
                 <button
