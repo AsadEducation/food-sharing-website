@@ -93,26 +93,41 @@ const Navbar = () => {
             })
     }
     return (
-        <div className="navbar bg-base-100 items-center">
-            <div className="navbar-start">
-                <div className="dropdown">
-                    <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            className="h-5 w-5"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="currentColor">
-                            <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth="2"
-                                d="M4 6h16M4 12h8m-8 6h16" />
-                        </svg>
+        <div className='bg-base-300 z-50 top-0 fixed w-full'>
+            <div className="navbar  items-center lg:w-11/12 mx-auto ">
+                <div className="navbar-start">
+                    <div className="dropdown">
+                        <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                className="h-5 w-5"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    strokeWidth="2"
+                                    d="M4 6h16M4 12h8m-8 6h16" />
+                            </svg>
+                        </div>
+                        <ul
+                            tabIndex={0}
+                            className="menu menu-sm dropdown-content bg-slate-400 rounded-box z-[1] mt-3 w-52 p-2 shadow">
+
+                            {
+                                links
+                            }
+
+                        </ul>
                     </div>
-                    <ul
-                        tabIndex={0}
-                        className="menu menu-sm dropdown-content bg-slate-400 rounded-box z-[1] mt-3 w-52 p-2 shadow">
+                    <div className='flex items-center justify-between'>
+                        <img className='w-10 h-10 rounded-full' src={logo} alt="" />
+                        <NavLink to={`/home`} className="text-xl text-[18px] font-bold italic hidden lg:block ml-4">Food Sharing</NavLink>
+                    </div>
+                </div>
+                <div className="navbar-center hidden lg:flex">
+                    <ul className="menu menu-horizontal px-1">
 
                         {
                             links
@@ -120,30 +135,17 @@ const Navbar = () => {
 
                     </ul>
                 </div>
-                <div className='flex items-center justify-between'>
-                    <img className='w-10 h-10 rounded-full' src={logo} alt="" />
-                    <NavLink to={`/home`} className="btn btn-ghost text-xl text-[18px] font-bold italic">Food Sharing</NavLink>
-                </div>
-            </div>
-            <div className="navbar-center hidden lg:flex">
-                <ul className="menu menu-horizontal px-1">
-
+                <div className="navbar-end">
                     {
-                        links
+                        user ? <div className='flex gap-2 items-center'>
+                            <img className='h-10 w-10 rounded-full object-cover' src={user.photoURL} alt="" />
+                            <button onClick={handleLogoutClicked} className="btn bg-green-400">Logout</button>
+                        </div>
+
+                            :
+                            <NavLink to={'/auth/login'} className="btn bg-green-400">Login</NavLink>
                     }
-
-                </ul>
-            </div>
-            <div className="navbar-end">
-                {
-                    user ? <div className='flex gap-2 items-center'>
-                        <img className='h-10 w-10 rounded-full object-cover' src={user.photoURL} alt="" />
-                        <button onClick={handleLogoutClicked} className="btn bg-green-400">Logout</button>
-                    </div>
-
-                        :
-                        <NavLink to={'/auth/login'} className="btn bg-green-400">Login</NavLink>
-                }
+                </div>
             </div>
         </div>
     );

@@ -5,12 +5,15 @@ import bannerLottie from '../../assets/Lottie/foodLottie.json'
 
 const Banner = () => {
     return (
-        <div className='text-center space-y-4  lg:space-y-8  min-h-[60vh]' style={{ fontFamily: 'Poppins, sans-serif' }}>
+        <div className='text-center space-y-4  lg:space-y-8  lg:min-h-[70vh]' style={{ fontFamily: 'Poppins, sans-serif' }}>
 
-            <h2 className="text-5xl font-bold">Share More, Waste Less</h2>
-            <p>"Join our community-driven platform to share surplus food, <br /> fight waste, and make a difference. Together, we feed those in need while reducing food waste—one meal at a time."</p>
+            {/* text content  */}
+            <div className='space-y-2 lg:space-y-4'>
+                <h2 className=" text-3xl lg:text-5xl font-bold">Share More, Waste Less</h2>
+                <p>"Join our community-driven platform to share surplus food, <br /> fight waste, and make a difference. Together, we feed those in need while reducing food waste—one meal at a time."</p>
+            </div>
 
-            <Lottie className='h-[500px]' animationData={bannerLottie} />
+            <Lottie className='h-[50vh]' animationData={bannerLottie} />
         </div>
     );
 };

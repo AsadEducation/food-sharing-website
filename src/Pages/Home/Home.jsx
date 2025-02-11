@@ -7,15 +7,15 @@ import FAQ from './FAQ';
 
 const Home = () => {
     return (
-        <div>
+        <div className='space-y-8 lg:space-y-12'>
 
-            <div className='mt-8 lg:mt-12'> <Banner /></div>
+            <div className='mt-32'> <Banner /></div>
 
-            <div className='mt-8 lg:mt-12'> <FeaturedFoods /></div>
+            <div className=''> <FeaturedFoods /></div>
 
-            <div className='mt-8 lg:mt-12'><FoodStorageLocation /></div>
+            <div className=''><FoodStorageLocation /></div>
 
-            <div className='mt-8 lg:mt-12'> <FAQ /></div>
+            <div className=''> <FAQ /></div>
 
 
         </div>
