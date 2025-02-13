@@ -31,10 +31,10 @@ const MyRequestedFood = () => {
                 {/* head */}
                 <thead>
                     <tr>
-                        <th>Expire Date</th>
-                        <th>Donar Name</th>
-                        <th>Pickup Location</th>
-                        <th>Request Date</th>
+                        <th className='dark:text-white'>Expire Date</th>
+                        <th className='dark:text-white'>Donar Name</th>
+                        <th className='dark:text-white'>Pickup Location</th>
+                        <th className='dark:text-white'>Request Date</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -54,10 +54,10 @@ const MyRequestedFood = () => {
 
                             return (
                                 <tr key={index} className="hover">
-                                    <th>{expired_datetime}</th>
-                                    <td>{food_donator_name}</td>
-                                    <td>{pickup_location}</td>
-                                    <td>{food_requested_date}</td>
+                                    <th className='dark:text-white'>{expired_datetime}</th>
+                                    <td className='dark:text-white'>{food_donator_name}</td>
+                                    <td className='dark:text-white'>{pickup_location}</td>
+                                    <td className='dark:text-white'>{food_requested_date}</td>
                                 </tr>
 
                             )

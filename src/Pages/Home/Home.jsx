@@ -7,9 +7,9 @@ import FAQ from './FAQ';
 
 const Home = () => {
     return (
-        <div className='space-y-8 lg:space-y-12'>
+        <div className='space-y-8 lg:space-y-16'>
 
-            <div className='mt-32'> <Banner /></div>
+            <div className=''> <Banner /></div>
 
             <div className='md:w-11/12 mx-auto'> <FeaturedFoods /></div>
 

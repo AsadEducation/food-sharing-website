@@ -160,7 +160,7 @@ const FoodDetails = () => {
 
 
     return (
-        <div className="max-w-[95vw]  lg:flex justify-evenly items-center mx-auto p-6 bg-white ">
+        <div className="max-w-[95vw]  lg:flex justify-evenly items-center mx-auto p-6 bg-white dark:bg-slate-600 dark:text-white ">
             {/* Food Image */}
             <img
                 src={food_image}
@@ -172,7 +172,7 @@ const FoodDetails = () => {
 
             <div className='space-y-8'>
                 <h1 className="text-4xl font-bold mt-6 text-green-500">{food_name}</h1>
-                <p className="text-gray-600 mt-2">
+                <p className="text-gray-600 dark:text-white mt-2">
                     <span className="font-semibold text-2xl">Status: </span>
                     <span
                         className={`font-medium ${food_status === 'available' ? 'text-green-600' : 'text-red-600'
@@ -183,8 +183,8 @@ const FoodDetails = () => {
                 </p>
 
                 <div className="mt-4">
-                    <h2 className="text-2xl font-semibold text-gray-700">Details</h2>
-                    <ul className="list-disc list-inside mt-2 space-y-2  text-gray-600">
+                    <h2 className="text-2xl font-semibold text-gray-700 dark:text-white">Details</h2>
+                    <ul className="list-disc list-inside mt-2 space-y-2  text-gray-600 dark:text-white">
                         <li>
                             <span className="font-medium t">Quantity:</span> {food_quantity}
                         </li>
@@ -234,7 +234,7 @@ const FoodDetails = () => {
 
                 {/* Donator Information */}
                 <div className="mt-6">
-                    <h2 className="text-2xl font-semibold text-gray-700">Donator</h2>
+                    <h2 className="text-2xl font-semibold text-gray-700 dark:text-white">Donator</h2>
                     <div className="flex items-center mt-4">
                         <img
                             src={food_donator_image}
@@ -243,7 +243,7 @@ const FoodDetails = () => {
                         />
                         <div className="ml-4">
                             <p className="text-lg font-semibold">{food_donator_name}</p>
-                            <p className="text-gray-600">{food_donator_email}</p>
+                            <p className="text-gray-600 dark:text-white">{food_donator_email}</p>
                         </div>
                     </div>
                 </div>

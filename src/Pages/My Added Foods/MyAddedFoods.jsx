@@ -68,12 +68,12 @@ const MyAddedFoods = () => {
                 {/* head */}
                 <thead>
                     <tr>
-                        <th>Food Name</th>
-                        <th>Food Image</th>
-                        <th>Quantity</th>
-                        <th>Pickup Location</th>
-                        <th>Status</th>
-                        <th>Action</th>
+                        <th className="dark:text-white">Food Name</th>
+                        <th className="dark:text-white">Food Image</th>
+                        <th className="dark:text-white">Quantity</th>
+                        <th className="dark:text-white">Pickup Location</th>
+                        <th className="dark:text-white">Status</th>
+                        <th className="dark:text-white">Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -95,14 +95,14 @@ const MyAddedFoods = () => {
 
                             return (
                                 <tr key={index} className="hover">
-                                    <th>{food_name}</th>
-                                    <td>
+                                    <th className="dark:text-white">{food_name}</th>
+                                    <td className="dark:text-white">
                                         <img className="h-20 w-20 rounded-lg" src={food_image} alt="" />
                                     </td>
-                                    <td>{food_quantity}</td>
-                                    <td>{pickup_location}</td>
-                                    <td>{food_status}</td>
-                                    <td>
+                                    <td className="dark:text-white">{food_quantity}</td>
+                                    <td className="dark:text-white">{pickup_location}</td>
+                                    <td className="dark:text-white">{food_status}</td>
+                                    <td className="dark:text-white">
                                         <div className="flex gap-4 items-center">
                                             <NavLink state={myAddedFood} to={`/update-food`} > <CgPen className=" text-xl text-blue-400" />  </NavLink>
                                             <button onClick={() => handleTrashBox(_id)} > <CgTrash className="text-xl text-red-500" /></button>

@@ -1,20 +1,23 @@
 
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import logo from '/FoodLogo2.jpg'
 import { useAuth } from '../Hooks/useAuth';
+
 const Navbar = () => {
 
     const { user, logoutUser } = useAuth();
 
+    const {pathname} = useLocation();
+
     const links = (
-        <div className="lg:flex space-x-5 font-bold">
+        <div className="lg:flex space-x-3 font-bold">
             <li>
                 <NavLink
                     to="/"
                     className={({ isActive }) =>
                         isActive
                             ? "bg-green-400 text-white font-bold" // Active styles
-                            : "hover:bg-green-400 text-gray-700" // Inactive styles
+                            : "hover:bg-green-400 text-gray-700 dark:text-white" // Inactive styles
                     }
                 >
                     Home
@@ -26,7 +29,7 @@ const Navbar = () => {
                     className={({ isActive }) =>
                         isActive
                             ? "bg-green-400 text-white font-bold" // Active styles
-                            : "hover:bg-green-400 text-gray-700" // Inactive styles
+                            : "hover:bg-green-400 text-gray-700 dark:text-white" // Inactive styles
                     }
                 >
                     All Foods
@@ -38,48 +41,54 @@ const Navbar = () => {
                     className={({ isActive }) =>
                         isActive
                             ? "bg-green-400 text-white font-bold"
-                            : "hover:bg-green-400 text-gray-700"
+                            : "hover:bg-green-400 text-gray-700 dark:text-white"
                     }
                 >
                     Available Foods
                 </NavLink>
             </li>
-            <li>
-                <NavLink
-                    to="/add-food"
-                    className={({ isActive }) =>
-                        isActive
-                            ? "bg-green-400 text-white font-bold"
-                            : "hover:bg-green-400 text-gray-700"
-                    }
-                >
-                    Add Food
-                </NavLink>
-            </li>
-            <li>
-                <NavLink
-                    to={`/my-added-foods`}
-                    className={({ isActive }) =>
-                        isActive
-                            ? "bg-green-400 text-white font-bold"
-                            : "hover:bg-green-400 text-gray-700"
-                    }
-                >
-                    Manage MyFoods
-                </NavLink>
-            </li>
-            <li>
-                <NavLink
-                    to={`/my-requested-food`}
-                    className={({ isActive }) =>
-                        isActive
-                            ? "bg-green-400 text-white font-bold"
-                            : "hover:bg-green-400 text-gray-700"
-                    }
-                >
-                    MyFood Request
-                </NavLink>
-            </li>
+            {
+                user && <li>
+                    <NavLink
+                        to="/add-food"
+                        className={({ isActive }) =>
+                            isActive
+                                ? "bg-green-400 text-white font-bold"
+                                : "hover:bg-green-400 text-gray-700 dark:text-white"
+                        }
+                    >
+                        Add Food
+                    </NavLink>
+                </li>
+            }
+            {
+                user && <li>
+                    <NavLink
+                        to={`/my-added-foods`}
+                        className={({ isActive }) =>
+                            isActive
+                                ? "bg-green-400 text-white font-bold"
+                                : "hover:bg-green-400 text-gray-700 dark:text-white"
+                        }
+                    >
+                        Manage MyFoods
+                    </NavLink>
+                </li>
+            }
+            {
+                user && <li>
+                    <NavLink
+                        to={`/my-requested-food`}
+                        className={({ isActive }) =>
+                            isActive
+                                ? "bg-green-400 text-white font-bold"
+                                : "hover:bg-green-400 text-gray-700 dark:text-white"
+                        }
+                    >
+                        MyFood Request
+                    </NavLink>
+                </li>
+            }
         </div>
     );
 
@@ -93,8 +102,10 @@ const Navbar = () => {
             })
     }
     return (
-        <div className='bg-base-300 z-50 top-0 fixed w-full'>
-            <div className="navbar  items-center lg:w-11/12 mx-auto ">
+        <div className='bg-base-300 dark:bg-slate-700 z-50 top-0 fixed w-full'>
+
+            <div className="navbar items-center lg:w-11/12 mx-auto relative">
+
                 <div className="navbar-start">
                     <div className="dropdown">
                         <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -123,11 +134,11 @@ const Navbar = () => {
                     </div>
                     <div className='flex items-center justify-between'>
                         <img className='w-10 h-10 rounded-full' src={logo} alt="" />
-                        <NavLink to={`/home`} className="text-xl text-[18px] font-bold italic hidden lg:block ml-4">Food Sharing</NavLink>
+                        <NavLink to={`/home`} className="text-xl text-[16px] font-bold italic hidden lg:block ml-4">Food Sharing</NavLink>
                     </div>
                 </div>
                 <div className="navbar-center hidden lg:flex">
-                    <ul className="menu menu-horizontal px-1">
+                    <ul key={pathname} className="menu menu-horizontal px-1">
 
                         {
                             links
@@ -136,12 +147,12 @@ const Navbar = () => {
                     </ul>
                 </div>
                 <div className="navbar-end">
+
                     {
                         user ? <div className='flex gap-2 items-center'>
                             <img className='h-10 w-10 rounded-full object-cover' src={user.photoURL} alt="" />
                             <button onClick={handleLogoutClicked} className="btn bg-green-400">Logout</button>
                         </div>
-
                             :
                             <NavLink to={'/auth/login'} className="btn bg-green-400">Login</NavLink>
                     }

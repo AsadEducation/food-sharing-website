@@ -51,18 +51,18 @@ const AvailableFoods = () => {
             
             <Title text={"available foods"}/>
 
-            <div className="lg:flex justify-between lg:px-6 items-center">
+            <div className="w-11/12 mx-auto lg:flex gap-[50vw] justify-between lg:px-6 items-center">
                 <button
                     onClick={() => setChangeLayout(!changeLayout)}
-                    className="btn btn-primary my-4 hidden  lg:block"
+                    className="btn w-full flex-1 bg-gray-500 dark:bg-slate-400 text-white my-4 hidden  lg:block"
                 >
                     Toggle Layout
                 </button>
 
                 {/* label for search box  */}
 
-                <label className="input input-bordered flex items-center gap-2">
-                    <input type="text" onChange={handleSearchBox} className="grow" placeholder="Search" />
+                <label className="input input-bordered w-full flex flex-1 items-center gap-2">
+                    <input type="text" onChange={handleSearchBox} className="grow text-black" placeholder="Search" />
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 16 16"

@@ -3,10 +3,10 @@ import FoodLogo from '../assets/FoodLogo2.jpg'
 
 const Footer = () => {
     return (
-        <footer className="footer bg-base-200 text-base-content p-10">
+        <footer className="footer bg-base-200 dark:bg-slate-600 dark:text-white text-base-content p-10">
             <aside>
                 <img className='h-20 rounded-full w-20' src={FoodLogo} alt="" />
-                <p className="font-bold text-gray-500">
+                <p className="font-bold text-gray-500 dark:text-white">
                     Food Sharing
                     <br />
                     {/* Providing reliable tech since 1992 */}

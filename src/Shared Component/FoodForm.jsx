@@ -10,7 +10,7 @@ const FoodForm = ({ onSubmit, defaultValues, isEditMode }) => {
             {/* Food Name */}
             <div className="form-control">
                 <label className="label">
-                    <span className="label-text">Food Name</span>
+                    <span >Food Name</span>
                 </label>
                 <input
                     type="text"
@@ -25,7 +25,7 @@ const FoodForm = ({ onSubmit, defaultValues, isEditMode }) => {
             {/* Food Image */}
             <div className="form-control">
                 <label className="label">
-                    <span className="label-text">Food Image</span>
+                    <span >Food Image</span>
                 </label>
                 <input
                     type="url"
@@ -40,7 +40,7 @@ const FoodForm = ({ onSubmit, defaultValues, isEditMode }) => {
             {/* Food Quantity */}
             <div className="form-control">
                 <label className="label">
-                    <span className="label-text">Food Quantity</span>
+                    <span >Food Quantity</span>
                 </label>
                 <input
                     type="number"
@@ -55,7 +55,7 @@ const FoodForm = ({ onSubmit, defaultValues, isEditMode }) => {
             {/* Pickup Location */}
             <div className="form-control">
                 <label className="label">
-                    <span className="label-text">Pickup Location</span>
+                    <span >Pickup Location</span>
                 </label>
                 <input
                     type="text"
@@ -70,7 +70,7 @@ const FoodForm = ({ onSubmit, defaultValues, isEditMode }) => {
             {/* Expired Date */}
             <div className="form-control">
                 <label className="label">
-                    <span className="label-text">Expired Date</span>
+                    <span >Expired Date</span>
                 </label>
                 <input
                     type="date"
@@ -85,7 +85,7 @@ const FoodForm = ({ onSubmit, defaultValues, isEditMode }) => {
             <div className="lg:flex items-center justify-between">
                 <div className="form-control lg:w-[50%]">
                     <label className="label">
-                        <span className="label-text">Additional Notes</span>
+                        <span >Additional Notes</span>
                     </label>
                     <textarea
                         placeholder="Describe food a little bit"
@@ -96,7 +96,7 @@ const FoodForm = ({ onSubmit, defaultValues, isEditMode }) => {
                 </div>
                 <div className="form-control lg:w-[50%]">
                     <label className="label">
-                        <span className="label-text">Food Status</span>
+                        <span >Food Status</span>
                     </label>
                     <select
                         className="select select-bordered"
@@ -113,7 +113,7 @@ const FoodForm = ({ onSubmit, defaultValues, isEditMode }) => {
             {/* Donator Info */}
             <div className="form-control">
                 <label className="label">
-                    <span className="label-text">Donator Name</span>
+                    <span >Donator Name</span>
                 </label>
                 <input
                     type="text"
@@ -126,7 +126,7 @@ const FoodForm = ({ onSubmit, defaultValues, isEditMode }) => {
             </div>
             <div className="form-control">
                 <label className="label">
-                    <span className="label-text">Donator Image</span>
+                    <span >Donator Image</span>
                 </label>
                 <input
                     type="url"
@@ -140,7 +140,7 @@ const FoodForm = ({ onSubmit, defaultValues, isEditMode }) => {
             </div>
             <div className="form-control">
                 <label className="label">
-                    <span className="label-text">Donator Email</span>
+                    <span >Donator Email</span>
                 </label>
                 <input
                     type="email"

@@ -4,7 +4,7 @@ import Swal from 'sweetalert2';
 import { useAuth } from '../../Hooks/useAuth';
 import FoodForm from '../../Shared Component/FoodForm';
 import { useNavigate } from 'react-router-dom';
-
+import Title from '../../Shared Component/title/Title';
 
 
 const AddFood = () => {
@@ -57,7 +57,7 @@ const AddFood = () => {
     return (
         <div className='w-[99%] lg:w-[50%] my-8 lg:my-12 mx-auto'>
 
-            <h2 className="text-3xl lg:text-5xl font-bold text-center text-gray-600">Add Foods </h2>
+           <Title text={"Add Food"}/>
 
             <FoodForm
               onSubmit={handleAddFoodSubmit}
