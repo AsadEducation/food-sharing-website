@@ -22,7 +22,7 @@ const RootLayout = () => {
 
             <div><Navbar /></div>
 
-            <div className='pt-[11vh] pb-[5vh] mx-auto w-fit'>
+            <div className='pt-[14vh] pb-[5vh] mx-auto w-fit'>
                 <input type="checkbox"
                     onChange={(e) => {
                         const darkMode = e.target.checked;

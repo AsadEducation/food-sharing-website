@@ -22,7 +22,7 @@ const AllFoods = () => {
     }
 
     return (
-        <div className='space-y-12 min-h-screen dark'>
+        <div className='space-y-12 min-h-screen'>
 
             {/* <h2 className="text-3xl lg:text-5xl font-semibold text-center">All Foods </h2> */}
             <Title text="all foods" />
